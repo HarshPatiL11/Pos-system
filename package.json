@@ -4,8 +4,8 @@
   "description": "A point of sales  system",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "start": "node server.js",
+  "server": "nodemon server.js"  },
   "author": "Harsh Patil",
   "license": "MIT",
   "dependencies": {
