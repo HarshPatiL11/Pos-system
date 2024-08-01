@@ -1,50 +1,84 @@
-import itemModel from "../Model/itemModel";
+import fs from 'fs';
+import Item from '../Model/itemModel.js'; // Ensure this path is correct
 
-export const registerItem = async (req, res) => {
+export const createItemController = async (req, res) => {
     try {
-        const { name, price, category, image } = req.body;
+        const { name, price, category } = req.fields; // Added price and category
+        const { image } = req.files;
 
-        // Validate the input fields
-        if (!name) return res.status(400).json({ error: "Name is required" });
-        if (!price) return res.status(400).json({ error: "Price is required" });
-        if (!category) return res.status(400).json({ error: "Category is required" });
-        if (!image) return res.status(400).json({ error: "Image is required" });
+        // Validations
+        if (!name) return res.status(400).send({ error: 'Name is required' });
+        if (price === undefined) return res.status(400).send({ error: 'Price is required' });
+        if (price < 0) return res.status(400).send({ error: 'Price must be a positive number' }); // Optional: Price validation
+        if (!category) return res.status(400).send({ error: 'Category is required' });
+        if (image && image.size > 1000000) return res.status(400).send({ error: 'Image should be less than 1 MB' });
 
-         // Check if an item with the same name exists in the same category
-         const existingItem = await itemModel.findOne({ name, category });
-         if (existingItem) {
-             return res.status(400).json({ error: "Item with the same name already exists in this category" });
-         }
- 
-        // Create a new item
-        const newItem = new itemModel({
+        const item = new Item({
             name,
-            price,
-            category,
-            image,
+            price, // Added price
+            category, // Added category
         });
 
-        // Save the item to the database
-        await newItem.save();
+        if (image) {
+            item.image.data = fs.readFileSync(image.path);
+            item.image.contentType = image.type;
+        }
 
-        // Respond with success
-        res.status(201).json({ message: "Item registered successfully", item: newItem });
+        await item.save();
+        res.status(201).send({
+            status: true,
+            message: 'Item created successfully',
+            item,
+        });
     } catch (error) {
-        // Handle any errors
         console.error(error);
-        res.status(500).json({ error: "An error occurred while registering the item" });
-    }
-}
-
-// get all items
-export const getAllItems = async (req, res) => {
-    try {
-        const allItems = await itemModel.find();
-        res.status(200).json(allItems);
-    } catch (error) {
-        console.error(`Error getting mobile phones: ${error}`);
-        res.status(500).send("Internal Server Error");
+        res.status(500).send({ error: 'Internal server error' });
     }
 };
 
+// Get all items
+export const getAllItemController = async (req, res) => {
+    try {
+        const items = await Item.find();
 
+        // Convert image data to base64
+        const itemsWithImages = items.map(item => {
+            const image = item.image.data
+                ? `data:${item.image.contentType};base64,${item.image.data.toString('base64')}`
+                : null;
+
+            return {
+                ...item._doc,
+                image
+            };
+        });
+
+        res.status(200).json(itemsWithImages);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ error: 'Internal server error' });
+    }
+};
+
+// Get a single item by ID
+export const getItemByNameController = async (req, res) => {
+    try {
+        const itemName = req.params.name;
+
+        const item = await Item.findOne({ name: itemName });
+
+        if (!item) return res.status(404).send({ error: 'Item not found' });
+
+        const image = item.image.data
+            ? `data:${item.image.contentType};base64,${item.image.data.toString('base64')}`
+            : null;
+
+        res.status(200).json({
+            ...item._doc,
+            image
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ error: 'Internal server error' });
+    }
+};

@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 import colors from 'colors';
 import bodyParser from 'body-parser';
 import { connectDb } from './DB/DB.js';
+import router from './MVC/Routes/AuthRoute.js';
 
 dotenv.config();
 
@@ -22,6 +23,10 @@ const PORT = process.env.PORT;
 app.get('/',(req,res)=>{
     res.send("hello POS")
 })
+
+// api routing
+app.use('/api/v1/', router);
+
 
 // listen
 app.listen(PORT,()=>{
