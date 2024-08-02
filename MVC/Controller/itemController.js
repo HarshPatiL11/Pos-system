@@ -82,3 +82,63 @@ export const getItemByNameController = async (req, res) => {
         res.status(500).send({ error: 'Internal server error' });
     }
 };
+
+
+// Update an item by name
+export const updateItemController = async (req, res) => {
+    try {
+        const itemName = req.params.name;
+        const { price, category } = req.body;
+
+        // Validations
+        if (price === undefined) return res.status(400).send({ error: 'Price is required' });
+        if (price < 0) return res.status(400).send({ error: 'Price must be a positive number' });
+        if (!category) return res.status(400).send({ error: 'Category is required' });
+
+        const updatedItem = await Item.findOneAndUpdate(
+            { name: itemName },
+            { price, category },
+            { new: true } // Return the updated document
+        );
+
+        if (!updatedItem) return res.status(404).send({ error: 'Item not found' });
+
+        // Convert image data to base64 if necessary
+        const image = updatedItem.image.data
+            ? `data:${updatedItem.image.contentType};base64,${updatedItem.image.data.toString('base64')}`
+            : null;
+
+        res.status(200).json({
+            status: true,
+            message: 'Item updated successfully',
+            item: {
+                ...updatedItem._doc,
+                image, 
+            },
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ error: 'Internal server error' });
+    }
+};
+
+
+// Delete an item by name
+export const deleteItemController = async (req, res) => {
+    try {
+        const itemName = req.params.name;
+
+        const deletedItem = await Item.findOneAndDelete({ name: itemName });
+
+        if (!deletedItem) return res.status(404).send({ error: 'Item not found' });
+
+        res.status(200).send({
+            status: true,
+            message: 'Item deleted successfully',
+            deletedItem,
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ error: 'Internal server error' });
+    }
+};

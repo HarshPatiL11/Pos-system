@@ -57,4 +57,10 @@
   background-color: #005792!important;
 
 }
-
+.cart-item svg{
+color: #13334C;
+font-size: 1rem;
+}
+.cart-item svg:hover{
+color: #005792;
+}
