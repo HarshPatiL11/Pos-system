@@ -1,0 +1,43 @@
+
+  
+  
+  
+
+  
+  .ant-card-meta-title{
+    font-size: 1rem; 
+    font-weight: bold; 
+  }
+  
+  .card-text {
+    font-size: 1rem; 
+  }
+
+  .row {
+    margin-bottom: 10px
+  }
+  
+  .container {
+    margin-top: 10px; 
+  }
+  
+  .card-img-top {
+    height: 150px; 
+    object-fit: cover; 
+  }
+  
+  .ant-card {
+    transition: transform 0.2s; 
+    height: 230px;
+    width: 250px;
+    margin: 16px 0;
+  }
+  .ant-card:hover {
+    transform: scale(1.05); 
+  }
+  
+  .ant-row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  

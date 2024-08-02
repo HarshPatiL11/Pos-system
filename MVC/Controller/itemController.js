@@ -36,7 +36,7 @@ export const createItemController = async (req, res) => {
     }
 };
 
-// Get all items
+// get AllItem Controller
 export const getAllItemController = async (req, res) => {
     try {
         const items = await Item.find();
@@ -49,7 +49,7 @@ export const getAllItemController = async (req, res) => {
 
             return {
                 ...item._doc,
-                image
+                image,
             };
         });
 

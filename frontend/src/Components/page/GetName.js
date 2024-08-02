@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import AppLayout from '../layout/appLayout.js';
 
 const GetItemByName = () => {
     const [name, setName] = useState('');
@@ -17,8 +18,8 @@ const GetItemByName = () => {
     };
 
     return (
+        <AppLayout>
         <div>
-            <h2>get Item by name</h2>
             <form onSubmit={handleSubmit}>
                 <input 
                     type="text" 
@@ -38,6 +39,7 @@ const GetItemByName = () => {
                 </div>
             )}
         </div>
+        </AppLayout>
     );
 };
 

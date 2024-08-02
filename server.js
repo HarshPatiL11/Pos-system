@@ -25,7 +25,7 @@ app.get('/',(req,res)=>{
 })
 
 // api routing
-app.use('/api/v1/', router);
+app.use('/api/v1', router);
 
 
 // listen

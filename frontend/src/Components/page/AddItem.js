@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import '../css/AddItem.css';
-
+import AppLayout from '../layout/appLayout.js'
 const AddImage = ({ onProductAdded }) => {
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
@@ -34,8 +34,9 @@ const AddImage = ({ onProductAdded }) => {
     };
 
     return (
+        <AppLayout>
         <form onSubmit={handleSubmit}>
-            <h2>Add Item</h2>
+            <h2>Create Product</h2>
             <input
                 type="text"
                 placeholder="Product Name"
@@ -64,6 +65,7 @@ const AddImage = ({ onProductAdded }) => {
             />
             <button type="submit">Add Product</button>
         </form>
+        </AppLayout>
     );
 };
 
