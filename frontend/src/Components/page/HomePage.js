@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToCart, removeFromCart } from '../Redux/cartSlice.js';
 import AppLayout from '../layout/appLayout.js'; // Ensure the correct path to your AppLayout.
 import axios from 'axios';
-import { Card, Row, Col } from 'antd';
+import { Card, Row, Col,Button,Flex } from 'antd';
 import '../css/HomePage.css';
+import Cart from './cart.js';
 
 const { Meta } = Card;
 
 const HomePage = () => {
   const [items, setItems] = useState([]);
+  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart);
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -23,6 +28,12 @@ const HomePage = () => {
     fetchItems();
   }, []);
 
+  const handleAddToCart = (item) => {
+    dispatch(addToCart(item));
+  };
+  const handleRemoveCart = (item) => {
+    dispatch(removeFromCart(item));
+  };
   return (
     <AppLayout>
       <div className="container mt-4">
@@ -40,6 +51,16 @@ const HomePage = () => {
                     title={item.name}
                     description={`Price: ₹ ${item.price}`}
                   />
+                  <Flex wrap gap="small">
+                  <Button type="primary" className='rmBtn' onClick={() => handleRemoveCart(item)}>
+                    Remove
+                  </Button>
+
+                      <Button type="primary" onClick={() => handleAddToCart(item)}>
+                          Add to Cart
+                      </Button>
+                  </Flex>
+                  
                 </Card>
               </Col>
             ))

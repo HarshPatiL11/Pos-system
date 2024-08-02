@@ -9,6 +9,7 @@ import {
   LogoutOutlined,
   HomeOutlined,
   CopyOutlined,
+  ShoppingCartOutlined 
 } from "@ant-design/icons";
 import '../css/appLayout.css'
 const { Header, Sider, Content } = Layout;
@@ -35,6 +36,9 @@ const  AppLayout =({children})=>{
           >
             <Menu.Item key="/" icon={<HomeOutlined />}>
               <Link to="/">Home</Link>
+            </Menu.Item>
+            <Menu.Item key="/cart" icon={<ShoppingCartOutlined /> }>
+              <Link to="/cart">Cart</Link>
             </Menu.Item>
             <Menu.Item key="/bills" icon={<CopyOutlined />}>
               <Link to="/bills">Bills</Link>
