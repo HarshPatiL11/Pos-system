@@ -1,0 +1,106 @@
+:root {
+    --dark-blue: #13334C;
+    --medium-blue: #005792;
+    --light-cream: #F6F6E9;
+    --white:#fff;
+    --orange: #FD5F00;
+    --green: #28a745;
+     --red: #dc3545;
+}
+  
+  .menuEditContainer {
+    background-color: var(--light-cream);
+    color: var(--dark-blue);
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    height: 100%;
+  }
+
+  .menuEditContainer h1 {
+    color: var(--dark-blue);
+    text-align: center;
+  }
+  
+  .menuEditContainer button {
+   
+  }
+  .addMenuBtn{
+    padding: 10px 20px;
+    background-color: var(--green);
+    color: var(--white)!important;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 0;
+  }
+  
+  
+  .addMenuBtn:hover {
+    background-color: var(--white);
+    color: var(--green)!important;
+    border: 1px var(--green) solid;
+    box-shadow: 1px 2px 8px 3px var(--green) ;
+  }
+  
+  .menuEditContainer .ant-table-thead > tr > th {
+    background-color: var(--medium-blue);
+    color: var(--light-cream);
+  }
+  
+  .menuEditContainer .ant-table-tbody > tr > td {
+    background-color: #fff;
+    color: var(--dark-blue);
+    border: 1px var(--medium-blue) solid;
+    border-top:0px ;
+  
+  }
+  
+  .menuEditContainer .ant-modal-title {
+    color: var(--dark-blue);
+  }
+  
+  .menuEditContainer .ant-modal {
+    background-color: var(--light-cream);
+  }
+  
+  .menuEditContainer .ant-modal-content {
+    background-color: var(--light-cream);
+  }
+  
+  .menuEditContainer .ant-modal-footer button {
+    background-color: var(--orange);
+    color: var(--light-cream);
+  }
+  
+  .menuEditContainer .ant-modal-footer button:hover {
+    background-color: var(--medium-blue);
+    color: var(--light-cream);
+  }
+  
+  .menuEditContainer .ant-form-item-label > label {
+    color: var(--dark-blue);
+  }
+  
+  .menuEditContainer .ant-input {
+    background-color: var(--light-cream);
+    border: 1px solid var(--medium-blue);
+  }
+  
+  .menuEditContainer .ant-select-selector {
+    background-color: var(--light-cream);
+    border: 1px solid var(--medium-blue);
+  }
+  
+  .menuEditContainer .ant-select-dropdown {
+    background-color: var(--light-cream);
+  }
+  
+  .menuEditContainer .ant-select-item-option {
+    color: var(--dark-blue);
+  }
+  
+  .menuEditContainer .ant-select-item-option-selected {
+    background-color: var(--medium-blue);
+    color: var(--light-cream);
+  }
+  

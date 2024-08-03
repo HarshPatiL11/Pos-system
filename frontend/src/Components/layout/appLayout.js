@@ -7,10 +7,12 @@ import {
   MenuFoldOutlined, 
   UserOutlined,
   SearchOutlined,
+  LoginOutlined,
   LogoutOutlined,
   HomeOutlined,
   CopyOutlined,
-  ShoppingCartOutlined 
+  ShoppingCartOutlined,
+  BookOutlined
 } from "@ant-design/icons";
 import '../css/appLayout.css';
 
@@ -29,7 +31,7 @@ const AppLayout = ({ children }) => {
     <Layout>
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <div className="logo">
-          <h1 className={`text-center text-light font-weight-bold mt-4`}>
+          <h1 className={`text-center text-light font-weight-bold mt-4 `}>
             {collapsed ? 'RC' : 'RedCaf'}
           </h1>
         </div>
@@ -47,17 +49,17 @@ const AppLayout = ({ children }) => {
           <Menu.Item key="/bills" icon={<CopyOutlined />}>
             <Link to="/bills">Bills</Link>
           </Menu.Item>
-          <Menu.Item key="/menuEdit" icon={<SearchOutlined />}>
+          <Menu.Item key="/menuEdit" icon={<BookOutlined />}>
             <Link to="/menuEdit">Menu</Link>
           </Menu.Item>
-          <Menu.Item key="/Item" icon={<SearchOutlined />}>
+          <Menu.Item key="/Item" icon={<SearchOutlined />}> 
             <Link to="/Item">Search</Link>
           </Menu.Item>
-          <Menu.Item key="/customers" icon={<UserOutlined />}>
+          {/* <Menu.Item key="/customers" icon={<UserOutlined />}>
             <Link to="/customers">Customers</Link>
-          </Menu.Item>
-          <Menu.Item key="/logout" icon={<LogoutOutlined />}>
-            Logout
+          </Menu.Item> */}
+          <Menu.Item key="/SignUP" icon={<LoginOutlined />}>
+          <Link to="/SignUP">SignUP</Link>
           </Menu.Item>
         </Menu>
       </Sider>
@@ -88,12 +90,12 @@ const AppLayout = ({ children }) => {
             minHeight: 280,
           }}
         >
-          {loading ? ( // Display spinner when loading is true
+          {loading ? ( 
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
               <Spin size="large" />
             </div>
           ) : (
-            children // Render children when not loading
+            children 
           )}
         </Content>
       </Layout>

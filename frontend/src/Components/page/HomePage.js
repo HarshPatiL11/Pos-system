@@ -39,7 +39,7 @@ const HomePage = () => {
   };
   return (
     <AppLayout>
-      <div className="container mt-4">
+      <div className="container mt-4 homeContainer">
       {loading? (<Spin size="large" />):
       (
         <Row gutter={[16, 16]}>

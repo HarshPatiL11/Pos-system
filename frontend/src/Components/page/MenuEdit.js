@@ -5,6 +5,9 @@ import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { showLoading, setNotLoading } from '../Redux/cartSlice.js';
 import { Table, Modal, Input, Form ,Select} from 'antd';
+
+import '../css/itemMenu.css'
+
 const { Option } = Select; 
 const MenuEdit = () => {
     const [items, setItems] = useState([]);
@@ -149,65 +152,64 @@ const MenuEdit = () => {
     return (
         <>
             <AppLayout>
+                <div className="menuEditContainer">
                 <div>
                     <div>
                     <h1>Menu</h1>
-                    <button onClick={() => setAddItemVisible(true)}>Add menu item</button>
+                    <button className='addMenuBtn' onClick={() => setAddItemVisible(true)}>Add menu item</button>
 
                     </div>
                     <Table dataSource={items} columns={columns} rowKey="_id" />
                 </div>
                 
-                <Modal
-    title="Add Menu Item"
-    visible={addItemVisible}
-    onOk={handleAddItem}
-    onCancel={() => setAddItemVisible(false)}
->
-    <Form layout="vertical">
-        <Form.Item
-            label="Name"
-            required
-        >
-            <Input
-                value={newItem.name}
-                onChange={(e) => setNewItem({ ...newItem, name: e.target.value })}
-            />
-        </Form.Item>
-        <Form.Item
-            label="Image"
-            required
-        >
-            <input type="file" accept="image/*" onChange={(e) => setNewItem({ ...newItem, image: e.target.files[0] })} />
-        </Form.Item>
-        <Form.Item
-            label="Category"
-            required
-        >
-            <Select
-                placeholder="Select a category"
-                onChange={(value) => setNewItem({ ...newItem, category: value })}
-            >
-                <Option value="MainCourse">Main Course</Option>
-                <Option value="Starter">Starter</Option>
-                <Option value="Plate Cleanser">Plate Cleanser</Option>
-                <Option value="Alcohol">Alcohol</Option>
-                <Option value="Beverage">Beverage</Option>
-                <Option value="Snack">Snack</Option>
-            </Select>
-        </Form.Item>
-        <Form.Item
-            label="Price"
-            required
-        >
-            <Input
-                type="number"
-                value={newItem.price}
-                onChange={(e) => setNewItem({ ...newItem, price: e.target.value })}
-            />
-        </Form.Item>
-    </Form>
-</Modal>
+                <Modal  title="Add Menu Item"
+                        visible={addItemVisible}
+                        onOk={handleAddItem}
+                        onCancel={() => setAddItemVisible(false)}>
+                    <Form layout="vertical">
+                        <Form.Item
+                            label="Name"
+                            required
+                        >
+                            <Input
+                                value={newItem.name}
+                                onChange={(e) => setNewItem({ ...newItem, name: e.target.value })}
+                            />
+                        </Form.Item>
+                        <Form.Item
+                            label="Image"
+                            required
+                        >
+                            <input type="file" accept="image/*" onChange={(e) => setNewItem({ ...newItem, image: e.target.files[0] })} />
+                        </Form.Item>
+                        <Form.Item
+                            label="Category"
+                            required
+                        >
+                            <Select
+                                placeholder="Select a category"
+                                onChange={(value) => setNewItem({ ...newItem, category: value })}
+                            >
+                                <Option value="MainCourse">Main Course</Option>
+                                <Option value="Starter">Starter</Option>
+                                <Option value="Plate Cleanser">Plate Cleanser</Option>
+                                <Option value="Alcohol">Alcohol</Option>
+                                <Option value="Beverage">Beverage</Option>
+                                <Option value="Snack">Snack</Option>
+                            </Select>
+                        </Form.Item>
+                        <Form.Item
+                            label="Price"
+                            required
+                        >
+                            <Input
+                                type="number"
+                                value={newItem.price}
+                                onChange={(e) => setNewItem({ ...newItem, price: e.target.value })}
+                            />
+                        </Form.Item>
+                    </Form>
+                </Modal>
 
                 <Modal
                     title="Edit Item"
@@ -231,7 +233,7 @@ const MenuEdit = () => {
                             <Input />
                         </Form.Item>
                     </Form>
-                </Modal>
+                </Modal></div>
             </AppLayout>
         </>
     );

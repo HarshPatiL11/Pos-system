@@ -1,34 +1,53 @@
+:root {
+  --dark-blue: #13334C;
+  --medium-blue: #005792;
+  --light-cream: #F6F6E9;
+  --white:#fff;
+  --orange: #FD5F00;
+  --red:#ff0000;
+  --green:#008000;
+}
 
-.ant-card-meta-title{
-  font-size: 1rem; 
-  font-weight: bold; 
+.homeContainer {
+  background-color: var(--light-cream);
+  color: var(--dark-blue);
+  font-family: Arial, sans-serif;
+  height: 100%;
+}
+
+.ant-card-meta-title {
+  font-size: 1rem;
+  font-weight: bold;
 }
 
 .card-text {
-  font-size: 1rem; 
+  font-size: 1rem;
 }
 
 .row {
-  margin-bottom: 10px
+  margin-bottom: 10px;
 }
 
 .container {
-  margin-top: 10px; 
+  margin-top: 10px;
 }
 
 .card-img-top {
-  height: 150px; 
-  object-fit: cover; 
+  height: 150px;
+  object-fit: cover;
 }
 
 .ant-card {
-  transition: transform 0.2s; 
+  padding: 4px;
+  transition: transform 0.2s;
   height: 280px;
   width: 250px;
   margin: 16px 0;
+  border: 1px solid var(--medium-blue);
 }
+
 .ant-card:hover {
-  transform: scale(1.05); 
+  transform: scale(1.05);
 }
 
 .ant-row {
@@ -36,22 +55,28 @@
   margin-right: 0 !important;
 }
 
-.ant-btn{
+.ant-btn {
   margin-top: 10px;
-  background-color: green;
+  background-color: var(--green);
+  border: none;
+  transition: background-color 0.3s, color 0.3s, border 0.3s, box-shadow 0.3s;
 }
-.ant-btn:hover{
-  background-color: rgb(255, 255, 255)!important;
-  color: #008000!important;
-  border: 1px solid #008000 ;
-  box-shadow: 2px 2px 4px 1px #0080008b !important;
+
+.ant-btn:hover {
+  background-color: var(--white) !important;
+  color: var(--green) !important;
+  border: 1px solid var(--green);
+  box-shadow: 2px 2px 4px 1px var(--green);
 }
-.rmBtn{
-  background-color: #ff0000;
+
+.rmBtn {
+  background-color: var(--red);
 }
-.rmBtn:hover{
-  background-color: rgb(255, 255, 255)!important;
-  color: #ff0000!important;
-  border: 1px solid #ff0000 ;
-  box-shadow: 2px 2px 4px 1px #ff00008e !important;
+
+.rmBtn:hover {
+  background-color: var(--white) !important;
+  color: var(--red) !important;
+  border: 1px solid var(--red);
+  box-shadow: 2px 2px 4px 1px var(--red);
 }
+

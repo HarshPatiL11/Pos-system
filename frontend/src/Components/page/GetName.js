@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Input,Card, Button } from 'antd';
+import { SearchOutlined } from '@ant-design/icons';
 import AppLayout from '../layout/appLayout.js';
+import '../css/getName.css';
+
+const { Meta } = Card;
 
 const GetItemByName = () => {
     const [name, setName] = useState('');
@@ -34,29 +39,54 @@ const GetItemByName = () => {
         }
     };
 
+    const handleRemoveCart = (item) => {
+        // Handle remove from cart logic here
+        console.log('Remove from cart:', item);
+    };
+
+    const handleAddToCart = (item) => {
+        // Handle add to cart logic here
+        console.log('Add to cart:', item);
+    };
+
     return (
         <AppLayout>
-            <div>
-                <form onSubmit={handleSubmit}>
-                    <input 
-                        type="text" 
+            <div className="get-item-container">
+            <h1>RedCaff Pos</h1>
+                <hr/>
+                <form onSubmit={handleSubmit} className="get-item-form">
+                    <Input 
                         placeholder="Item Name" 
                         value={name} 
                         onChange={(e) => setName(e.target.value)}
                         required 
+                        className="get-item-input"
+                        suffix={
+                            <SearchOutlined onClick={handleSubmit}/>
+                        }
                     />
-                    <button type="submit" disabled={loading}>
-                        {loading ? 'Loading...' : 'Get Item'}
-                    </button>
-                </form>
+                </form> 
+                <hr className='hr2'/>
                 {error && <p style={{ color: 'red' }}>{error}</p>}
                 {item && (
-                    <div>
-                        <h3>{item.name}</h3>
-                        <p>Price: ₹ {item.price}</p>
-                        <p>Category: {item.category}</p>
-                        {item.image && <img src={item.image} alt={item.name} />}
-                    </div>
+                    <Card
+                        hoverable
+                        cover={<img alt={item.name} src={item.image} className="card-img-top" />}
+                        className="item-card"
+                    >
+                        <Meta
+                            title={item.name}
+                            description={`Price: ₹ ${item.price}`}
+                        />
+                        <div className="card-actions">
+                            <Button type="primary" className='rmBtn' onClick={() => handleRemoveCart(item)}>
+                                Remove
+                            </Button>
+                            <Button type="primary" onClick={() => handleAddToCart(item)}>
+                                Add to Cart
+                            </Button>
+                        </div>
+                    </Card>
                 )}
             </div>
         </AppLayout>

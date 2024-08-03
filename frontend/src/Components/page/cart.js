@@ -54,7 +54,7 @@ const Cart = () => {
          <DeleteOutlined   className=' delIcon' onClick={() => handleRemoveFromCart(record)}>
           Remove
         </DeleteOutlined>
-        <PlusSquareOutlined  className=' delIcon' onClick={() => handleAddToCart(record)}/>
+        <PlusSquareOutlined  className=' addIcon' onClick={() => handleAddToCart(record)}/>
         </>
        
       ),
@@ -63,6 +63,8 @@ const Cart = () => {
 
   return (
     <AppLayout>
+      <div className="cartContainer">
+
       <div>
         <h2>Shopping Cart</h2>
         {cartItems.length === 0 ? (
@@ -71,6 +73,8 @@ const Cart = () => {
           <Table dataSource={cartItems} columns={columns} rowKey="_id" />
         )}
       </div>
+      </div>
+
     </AppLayout>
   );
 };
