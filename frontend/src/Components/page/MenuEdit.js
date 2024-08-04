@@ -61,7 +61,7 @@ const MenuEdit = () => {
             setMsg(response.data.message);
             setItems((prevItems) => [...prevItems, response.data.item]);
             setAddItemVisible(false);
-            setNewItem({ name: '', price: '', category: '', image: null }); // Reset new item state
+            setNewItem({ name: '', price: '', category: '', image: null }); 
         } catch (error) {
             setMsg('Error adding item.');
             console.error(error);

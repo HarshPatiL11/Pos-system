@@ -4,8 +4,6 @@
   --light-cream: #F6F6E9;
   --white:#fff;
   --orange: #FD5F00;
-  --red:#ff0000;
-  --green:#008000;
 }
 
 .homeContainer {
@@ -79,4 +77,23 @@
   border: 1px solid var(--red);
   box-shadow: 2px 2px 4px 1px var(--red);
 }
-
+/*   
+.ant-btn{
+margin-top: 10px;
+background-color: green;
+}
+.ant-btn:hover{
+background-color: rgb(255, 255, 255)!important;
+color: #008000!important;
+border: 1px solid #008000 ;
+box-shadow: 2px 2px 4px 1px #0080008b !important;
+}
+.rmBtn{
+background-color: #ff0000;
+}
+.rmBtn:hover{
+background-color: rgb(255, 255, 255)!important;
+color: #ff0000!important;
+border: 1px solid #ff0000 ;
+box-shadow: 2px 2px 4px 1px #ff00008e !important;
+} */

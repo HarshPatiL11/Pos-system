@@ -1,13 +1,12 @@
 import mongoose from "mongoose";
 
-// Define item model schema
 const itemModel = mongoose.Schema({
     name: {
         type: String,
-        required: true, // Corrected from 'require' to 'required'
+        required: true,
     },
     price: {
-        type: Number, // Consider changing to Number if you're dealing with prices
+        type: Number, 
         required: true,
     },
     category: {
@@ -24,6 +23,6 @@ const itemModel = mongoose.Schema({
             required:false
         }
     }
-}, { timestamps: true }); // Corrected from 'timestamp' to 'timestamps'
+}, { timestamps: true }); 
 
 export default mongoose.model('items', itemModel);

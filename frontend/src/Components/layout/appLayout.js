@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from 'react-redux';
-import { Layout, Menu, Spin } from "antd"; // Import Spin from antd
+import { Layout, Menu, Spin } from "antd"; 
 import { Link, useNavigate } from "react-router-dom";
 import {
   MenuUnfoldOutlined,
@@ -54,6 +54,9 @@ const AppLayout = ({ children }) => {
           </Menu.Item>
           <Menu.Item key="/Item" icon={<SearchOutlined />}> 
             <Link to="/Item">Search</Link>
+          </Menu.Item>
+          <Menu.Item key="/print" icon={<SearchOutlined />}> 
+            <Link to="/print">print</Link>
           </Menu.Item>
           {/* <Menu.Item key="/customers" icon={<UserOutlined />}>
             <Link to="/customers">Customers</Link>

@@ -29,7 +29,7 @@ const HomePage = () => {
     };
 
     getAllItems();
-  }, []);
+  }, [dispatch]);
 
   const handleAddToCart = (item) => {
     dispatch(addToCart(item));
@@ -40,8 +40,11 @@ const HomePage = () => {
   return (
     <AppLayout>
       <div className="container mt-4 homeContainer">
+      <h1>RedCaff Pos</h1>
+      <hr/>
       {loading? (<Spin size="large" />):
       (
+        
         <Row gutter={[16, 16]}>
         {items.length === 0 ? (
           <p>No items available.</p>

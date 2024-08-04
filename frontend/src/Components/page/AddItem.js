@@ -26,7 +26,7 @@ const AddImage = ({ onProductAdded }) => {
             onProductAdded(response.data.product);
             setName('');
             setPrice('');
-            setCategory(''); // Reset category
+            setCategory(''); 
             setImage(null);
         } catch (error) {
             console.error('Error creating product:', error.response.data);

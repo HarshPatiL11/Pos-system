@@ -14,7 +14,7 @@ const GetItemByName = () => {
     const [error, setError] = useState('');
     
     const capitalize = (str) => {
-        if (!str) return ''; // Handle empty strings
+        if (!str) return '';
         return str.charAt(0).toUpperCase() + str.slice(1);
     };
     
@@ -27,7 +27,7 @@ const GetItemByName = () => {
             const capitalizedName = name
                 .split(' ')
                 .map(word => capitalize(word))
-                .join(' '); // Capitalize each word and join them back with a space
+                .join(' '); 
     
             const response = await axios.get(`/api/v1/item/${encodeURIComponent(capitalizedName)}`);
             setItem(response.data);
@@ -40,12 +40,10 @@ const GetItemByName = () => {
     };
 
     const handleRemoveCart = (item) => {
-        // Handle remove from cart logic here
         console.log('Remove from cart:', item);
     };
 
     const handleAddToCart = (item) => {
-        // Handle add to cart logic here
         console.log('Add to cart:', item);
     };
 

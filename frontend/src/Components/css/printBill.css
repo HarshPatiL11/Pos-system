@@ -1,0 +1,66 @@
+:root {
+    --dark-blue: #13334C;
+    --medium-blue: #005792;
+    --light-cream: #F6F6E9;
+    --white: #fff;
+    --orange: #FD5F00;
+  }
+  
+  body {
+    background-color: var(--light-cream);
+    font-family: Arial, sans-serif;
+  }
+  
+  .bill-container {
+    margin: 20px auto;
+    padding: 20px;
+    width: 80%;
+    background-color: var(--white);
+    border: 1px solid var(--medium-blue);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .header {
+    margin-bottom: 20px;
+  }
+  
+  .logo img {
+    max-width: 150px;
+  }
+  
+  .bill-details {
+    margin-top: 20px;
+  }
+  
+  .customer-info p {
+    margin: 0;
+    padding: 5px 0;
+    font-size: 16px;
+  }
+  
+  .table {
+    margin-top: 20px;
+  }
+  
+  .table th,
+  .table td {
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .amount-details {
+    margin-top: 20px;
+    text-align: right;
+  }
+  
+  .amount-details p {
+    font-size: 18px;
+    margin: 0;
+    padding: 5px 0;
+    color: var(--dark-blue);
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
